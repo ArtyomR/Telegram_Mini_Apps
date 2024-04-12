@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавить событие в календарь</title>
+</head>
+<body>
+
+<button onclick="addEventToCalendar()">Добавить событие в календарь</button>
+
+<script>
+function addEventToCalendar() {
+    var eventTitle = encodeURIComponent('Важное событие'); // Название события
+    var eventLocation = encodeURIComponent('Место проведения'); // Место проведения события
+    var eventStartDate = encodeURIComponent('2024-04-12T08:00:00'); // Начальная дата и время события (в формате ГГГГ-ММ-ДДТЧЧ:ММ:СС)
+    var eventEndDate = encodeURIComponent('2024-04-12T09:00:00'); // Конечная дата и время события (в формате ГГГГ-ММ-ДДТЧЧ:ММ:СС)
+    
+    var url = 'data:text/calendar;charset=utf8,' + encodeURIComponent(
+        'BEGIN:VCALENDAR\n' +
+        'VERSION:2.0\n' +
+        'BEGIN:VEVENT\n' +
+        'SUMMARY:' + eventTitle + '\n' +
+        'LOCATION:' + eventLocation + '\n' +
+        'DTSTART:' + eventStartDate + '\n' +
+        'DTEND:' + eventEndDate + '\n' +
+        'END:VEVENT\n' +
+        'END:VCALENDAR'
+    );
+
+    window.open(url);
+}
+</script>
+
+</body>
+</html>
